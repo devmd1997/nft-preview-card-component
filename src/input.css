@@ -1,1 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --color-blue-500: hsl(215, 51%, 70%);
+    --color-blue-800: hsl(215, 32%, 27%);
+    --color-blue-900: hsl(216, 50%, 16%);
+    --color-blue-950: hsl(217, 54%, 11%);
+
+    --color-tourquoise: #00FFF8;
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: hsl(0, 0%, 0%);
+
+    --font-outfit: 'Outfit', sans-serif;
+
+    --text-lg: 18px;
+    --text-base: 16px;
+
+
+    --breakpoint-sm: 375px;
+    --breakpoint-lg: 1440px;
+
+    /* Spacing */
+    --spacing: 8px;
+
+    --radius-sm: 10px;
+    --radius-md: 15px;
+    --radius-lg: 25px;
+
+}
+
+@utility body-text {
+    font-size: var(--text-base);
+    line-height: 1.2;
+    font-weight: 300;
+}
+
+@utility label-text {
+    font-size: var(--text-base);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+@utility header-text {
+    font-size: var(--text-lg);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+
+
+@layer base {
+    body {
+        @apply bg-blue-950 min-h-screen flex flex-col justify-center items-center font-outfit p-3;
+    }
+
+    main {
+        @apply bg-blue-900 flex flex-col p-3 rounded-md gap-2 max-w-[350px];
+    }
+
+    h1 {
+        @apply header-text text-white hover:text-tourquoise cursor-pointer;
+    }
+
+    p {
+        @apply body-text text-blue-500;
+    }
+
+    hr {
+        @apply h-[1px] border-t-[0.5px] border-blue-500 w-full;
+    }
+}
+
+@layer components {
+    .main-image {
+        @apply rounded-md object-cover;
+    }
+
+    .main-image-container {
+        @apply relative;
+
+        &:hover .overlay {
+            @apply opacity-100;
+        }
+    }
+
+    .overlay {
+        @apply absolute inset-0 bg-tourquoise/50 flex justify-center items-center;
+        @apply opacity-0 transition-opacity duration-300 cursor-pointer;
+        @apply rounded-md; /* Match the image's border radius */
+    }
+    .coin-info {
+        @apply flex flex-row justify-between items-center;
+    }
+
+    .coin-price {
+        @apply flex flex-row gap-1 items-center justify-center;
+    }
+
+    .coin-price p {
+        @apply label-text text-tourquoise;
+    }
+
+    .days-left {
+        @apply flex flex-row gap-1 items-center justify-center;
+    }
+
+    .days-left p {
+        @apply body-text text-blue-500;
+    }
+
+    .profile {
+        @apply flex flex-row gap-2 items-center;
+    }
+
+    .profile-avatar {
+        @apply size-4 rounded-full border-1 border-white;
+    }
+}
